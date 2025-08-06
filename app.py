@@ -69,7 +69,7 @@ def predict_rf_xgb(model, scaler, df):
 
 def main():
     st.set_page_config(page_title="TCS Stock Dashboard", layout="wide")
-    st.title("📈 TCS Stock Price Prediction Dashboard")
+    st.title("TCS Stock Price Prediction Dashboard")
 
     # Load data and models
     df = load_data()
@@ -84,31 +84,31 @@ def main():
 
     # -----------------------------
     if menu == "Dashboard":
-        st.subheader("📊 Stock Closing Price History")
+        st.subheader(" Stock Closing Price History")
         st.line_chart(df['Close'])
 
-        st.subheader("📌 Latest Market Snapshot")
+        st.subheader(" Latest Market Snapshot")
         st.write(df.tail(5))
 
     # -----------------------------
     elif menu == "Model Predictions":
-        st.subheader("🧠 Prediction for Next Day")
+        st.subheader(" Prediction for Next Day")
 
-        if st.button("🔮 Predict with LSTM", key="predict_lstm"):
+        if st.button(" Predict with LSTM", key="predict_lstm"):
             pred = predict_lstm(lstm_model, scaler_lstm, df)
             st.success(f"LSTM Predicted Close Price: ₹{pred:.2f}")
 
-        if st.button("🌲 Predict with Random Forest", key="predict_rf"):
+        if st.button(" Predict with Random Forest", key="predict_rf"):
             pred = predict_rf_xgb(rf_model, scaler_rf, df_processed)
             st.success(f"Random Forest Predicted Close Price: ₹{pred:.2f}")
 
-        if st.button("📦 Predict with XGBoost", key="predict_xgb"):
+        if st.button(" Predict with XGBoost", key="predict_xgb"):
             pred = predict_rf_xgb(xgb_model, scaler_xgb, df_processed)
             st.success(f"XGBoost Predicted Close Price: ₹{pred:.2f}")
 
     # -----------------------------
     elif menu == "Model Performance":
-        st.subheader("📊 Model Performance Metrics")
+        st.subheader(" Model Performance Metrics")
 
         metrics_data = {
             "Model": ["XGBoost", "Random Forest", "LSTM"],
@@ -126,7 +126,7 @@ def main():
 
     # -----------------------------
     elif menu == "SHAP Importance":
-        st.subheader("📉 SHAP Feature Importance")
+        st.subheader(" SHAP Feature Importance")
 
         shap_image_path = f"{PREDICTIONS_DIR}/shap_summary.png"
 
@@ -142,15 +142,15 @@ def main():
 
     # -----------------------------
     elif menu == "Raw Data":
-        st.subheader("📁 Raw Stock Data")
+        st.subheader(" Raw Stock Data")
         st.dataframe(df)
 
-        st.download_button("📥 Download CSV", df.to_csv().encode(), "tcs_stock_data.csv", "text/csv")
+        st.download_button(" Download CSV", df.to_csv().encode(), "tcs_stock_data.csv", "text/csv")
    
     elif menu == "Model Details":
-        st.subheader("🧠 Model Information Cards")
+        st.subheader(" Model Information Cards")
 
-        with st.expander("🔮 LSTM (Long Short-Term Memory)"):
+        with st.expander(" LSTM (Long Short-Term Memory)"):
             st.markdown("""
             - **Type**: Deep learning (RNN-based)  
             - **Input**: Last 60 days of Close prices  
@@ -167,7 +167,7 @@ def main():
                 - Needs large data to perform well
             """)
 
-        with st.expander("🌲 Random Forest Regressor"):
+        with st.expander(" Random Forest Regressor"):
             st.markdown("""
             - **Type**: Ensemble machine learning model  
             - **Input Features**: OHLC, Moving Averages, Volatility, Lagged values, etc.  
@@ -180,7 +180,7 @@ def main():
                 - No sequence memory
             """)
 
-        with st.expander("📦 XGBoost Regressor"):
+        with st.expander(" XGBoost Regressor"):
             st.markdown("""
             - **Type**: Gradient Boosted Decision Trees  
             - **Input Features**: Similar to RF  
@@ -196,3 +196,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
