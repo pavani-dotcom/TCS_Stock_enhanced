@@ -134,7 +134,7 @@ def main():
 
         with open(shap_image_path, "rb") as file:
             st.download_button(
-                label="📥 Download SHAP Plot",
+                label=" Download SHAP Plot",
                 data=file,
                 file_name="shap_summary.png",
                 mime="image/png"
@@ -196,4 +196,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
