@@ -99,7 +99,7 @@ def main():
         pred_xgb = predict_rf_xgb_for_date(xgb_model, scaler_xgb, df_processed, selected_date)
 
         if pred_lstm is not None:
-            st.success(f"🔮 LSTM Prediction: ₹{pred_lstm:.2f}")
+            st.success(f" LSTM Prediction: ₹{pred_lstm:.2f}")
         else:
             st.warning(" LSTM prediction unavailable (requires 60 prior days).")
 
